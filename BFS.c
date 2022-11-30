@@ -43,13 +43,13 @@ void enqueue(struct queue* q, int val){
 }
 
 int dequeue(struct queue* q){
-    int a;
+    int a = -1;
     if(isEmpty(q)){
         printf("Underflow");
     }
     else{
-        a = q->arr[q->front];
         q->front++;
+        a = q->arr[q->front];
     }
     return a;
 }
@@ -86,14 +86,14 @@ int main(){
     
     while(!isEmpty(&q)){
         int u = dequeue(&q);
-        //printf("%d ", u);
-        //visited[u] = 1;
+        printf("%d ", u);
+        visited[u] = 1;
         
         for(int i = 0; i<10; i++){
-            printf("u: %d i: %d a[u][i]: %d vistited: %d \n", u, i, a[u][i], visited[i]);
+            //printf("u: %d i: %d a[u][i]: %d vistited: %d \n", u, i, a[u][i], visited[i]);
             if(a[u][i] == 1 && visited[i]==0){
-                printf("inside%d ", i);
                 enqueue(&q, i);
+                //printf("%d \n", i);
                 visited[i] = 1;
             }
         }
